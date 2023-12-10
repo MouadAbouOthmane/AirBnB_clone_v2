@@ -36,7 +36,7 @@ def do_deploy(archive_path):
         run(f"rm /tmp/{src}.tgz")
         run(f"mv {root}/{src}/web_static/* {root}/{src}/")
         run(f"rm -rf {root}/{src}/web_static ")
-        run("rm -rf /data/web_static/current")
+        # run("rm -rf /data/web_static/current")
         run(f"ln -s {root}/{src} /data/web_static/current")
         print("New version deployed!")
 

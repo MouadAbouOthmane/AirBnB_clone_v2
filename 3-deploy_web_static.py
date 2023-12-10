@@ -27,23 +27,23 @@ def do_deploy(archive_path):
 
     if not os.path.exists(archive_path):
         return False
-    try:
-        src = archive_path[9:-4]
-        root = "/data/web_static/releases"
-        put(archive_path, "/tmp")
-        run(f"mkdir -p {root}/{src}")
-        run(f"tar -xzf /tmp/{src}.tgz -C {root}/{src}")
-        run(f"rm /tmp/{src}.tgz")
-        run(f"mv {root}/{src}/web_static/* {root}/{src}/")
-        run(f"rm -rf {root}/{src}/web_static ")
-        run("rm -rf /data/web_static/current")
-        run(f"ln -s {root}/{src} /data/web_static/current")
-        print("New version deployed!")
+    # try:
+    src = archive_path[9:-4]
+    root = "/data/web_static/releases"
+    put(archive_path, "/tmp")
+    run(f"mkdir -p {root}/{src}")
+    run(f"tar -xzf /tmp/{src}.tgz -C {root}/{src}")
+    run(f"rm /tmp/{src}.tgz")
+    run(f"mv {root}/{src}/web_static/* {root}/{src}/")
+    run(f"rm -rf {root}/{src}/web_static ")
+    run("rm -rf /data/web_static/current")
+    run(f"ln -s {root}/{src} /data/web_static/current")
+    print("New version deployed!")
 
-        return True
+    return True
 
-    except Exception:
-        return False
+    # except Exception:
+    #     return False
 
 
 def deploy():

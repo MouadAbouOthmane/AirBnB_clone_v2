@@ -76,3 +76,7 @@ class DBStorage:
         # print("Tables created:", table_names)
         self.__session = scoped_session(sessionmaker(bind=self.__engine,
                                                      expire_on_commit=False))
+
+    def close(self):
+        """Clear and close the session"""
+        self.__session.remove()

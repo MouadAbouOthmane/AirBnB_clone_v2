@@ -64,3 +64,7 @@ class FileStorage:
             for key, value in cp.items():
                 if obj == value:
                     FileStorage.__objects.pop(key)
+
+    def close(self):
+        """call method for deserializing the JSON file to Objects"""
+        FileStorage.reload()
